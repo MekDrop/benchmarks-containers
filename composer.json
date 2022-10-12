@@ -11,7 +11,7 @@
         "pimple/pimple": "^3.0.0",
         "illuminate/container": "^5.0.0",
         "doctrine/cache": "^2.2.0@stable",
-        "symfony/config": "^2.7.0",
+        "symfony/config": "^3.2.14",
         "symfony/filesystem": "^2.7.0",
         "phpbench/phpbench": "^0.11.1",
         "league/container": "^2.2",
