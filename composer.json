@@ -20,5 +20,12 @@
             "PhpBench\\Benchmarks\\Container\\": "benchmarks",
             "PhpBench\\Benchmarks\\Container\\Acme\\": "lib"
         }
-    }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "allow-plugins": {
+            "kylekatarnls/update-helper": true
+         }
+    },
 }
