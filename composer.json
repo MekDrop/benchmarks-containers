@@ -1,6 +1,7 @@
 {
     "name": "phpbench/benchmark-containers",
     "license": "mit",
+    "description": "This benchmarking suite compares PHP Dependency Injection Containers. Its sort of an example project for PHPBench.",
     "comments": [
         "Doctrine Cache is for PHP-DI",
         "Symfony Config is for Symfony Dependency Injection (for the cache)"
