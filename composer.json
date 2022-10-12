@@ -13,7 +13,7 @@
         "doctrine/cache": "^2.2.0@stable",
         "symfony/config": "^2.7.0",
         "symfony/filesystem": "^2.7.0",
-        "phpbench/phpbench": "^0.11.1",
+        "phpbench/phpbench": "^0.16.10",
         "league/container": "^2.2",
         "zendframework/zend-servicemanager": "^3.0",
         "aura/di": "^3.0"
