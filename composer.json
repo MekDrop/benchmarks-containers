@@ -10,7 +10,7 @@
         "symfony/dependency-injection": "^2.7.0",
         "pimple/pimple": "^3.0.0",
         "illuminate/container": "^5.0.0",
-        "doctrine/cache": "@stable",
+        "doctrine/cache": "^2.2.0@stable",
         "symfony/config": "^2.7.0",
         "symfony/filesystem": "^2.7.0",
         "phpbench/phpbench": "^0.11.1",
