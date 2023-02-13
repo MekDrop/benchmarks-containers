@@ -4,16 +4,16 @@
     "description": "This benchmarking suite compares PHP Dependency Injection Containers. Its sort of an example project for PHPBench.",
     "require": {
         "php-di/php-di": "^5.0.0",
-        "symfony/dependency-injection": "^2.7.0",
+        "symfony/dependency-injection": "^4.2|^5",
         "pimple/pimple": "^3.0.0",
         "illuminate/container": "^5.0.0",
         "doctrine/cache": "^2.2.0@stable",
-        "symfony/config": "^2.7.0",
-        "symfony/filesystem": "^2.7.0",
-        "phpbench/phpbench": "^0.11.1",
+        "symfony/config": "^4.2|^5",
+        "symfony/filesystem": "^4.2|^5",
+        "phpbench/phpbench": "^1.1",
         "league/container": "^2.2",
-        "zendframework/zend-servicemanager": "^3.0",
-        "aura/di": "^3.0"
+        "aura/di": "^3.0",
+        "laminas/laminas-servicemanager": "^3.20"
     },
     "autoload": {
         "psr-4": {

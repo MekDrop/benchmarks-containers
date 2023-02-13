@@ -2,6 +2,7 @@
 
 namespace PhpBench\Benchmarks\Container;
 
+use PhpBench\Benchmarks\Container\Acme\BicycleFactory;
 use PhpBench\DependencyInjection\Container;
 
 /**
@@ -15,7 +16,7 @@ class PhpBenchBench extends ContainerBenchCase
     {
         $container = new Container();
         $container->register('bicycle_factory', function ($c) {
-            return new \PhpBench\Benchmarks\Container\Acme\BicycleFactory;
+            return new BicycleFactory;
         });
         $this->container = $container;
     }

@@ -26,11 +26,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Install PHP
-        uses: shivammathur/setup-php@master
+        uses: shivammathur/setup-php@2.24.0
         with:
           php-version: ${{ matrix.php }}
-          extensions: curl, gd, pdo_mysql, json, mbstring, pcre, session
-          ini-values: post_max_size=256M
+          extensions: curl, json, mbstring, pcre, session
           coverage: none
           tools: composer:v${{ matrix.composer }}
       - name: Composer validate
@@ -38,5 +37,27 @@ jobs:
       - name: Install Composer dependencies (with dev)
         run: composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader
       - name: Run benchmark
-        run: php vendor/bin/phpbench run --report=all
+        run: php vendor/bin/phpbench show latest --report=all --output=container_html
         shell: bash
+      - name: Convert HTML to Markdown
+        uses: rknj/html2markdown@v1.1.0
+        id: html2markdown
+        with:
+          html-file: "report.html"
+      - name: Get root composer.json packages
+        id: packages
+        run: echo "list=$(composer show -D | grep -v symfony/config | grep -v symfony/filesystem | grep -v doctrine/cache)\n" >> $GITHUB_OUTPUT
+        shell: bash
+      - name: Current Time
+        uses: gerred/current-time@v1.0.0
+        id: current-time
+      - name: Render Template
+        uses: chuhlomin/render-template@v1.6
+        with:
+          template: .github/templates/README.template.md
+          vars: |
+            packages: "${{ steps.packages.outputs.list }}" 
+            results: "${{ steps.html2markdown.outputs.markdown-content }}"
+            commit: "${{ github.sha }}"
+            time: "${{ steps.current-time.outputs.time }}"
+          result_path: .

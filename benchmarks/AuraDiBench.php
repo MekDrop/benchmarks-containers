@@ -6,6 +6,7 @@ use Aura\Di\Container;
 use Aura\Di\Injection\InjectionFactory;
 use Aura\Di\Resolver\Reflector;
 use Aura\Di\Resolver\Resolver;
+use PhpBench\Benchmarks\Container\Acme\BicycleFactory;
 
 /**
  * @Groups({"aura-di"}, extend=true)
@@ -28,7 +29,7 @@ class AuraDiBench extends ContainerBenchCase
 
     public function benchGetPrototype()
     {
-        $this->container->newInstance('PhpBench\Benchmarks\Container\Acme\BicycleFactory');
+        $this->container->newInstance(BicycleFactory::class);
     }
 
     public function benchLifecycle()

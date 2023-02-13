@@ -5,11 +5,12 @@ namespace PhpBench\Benchmarks\Container;
 use DI\ContainerBuilder;
 use DI\Cache\ArrayCache;
 use League\Container\Container;
+use PhpBench\Benchmarks\Container\Acme\BicycleFactory;
 
 /**
  * @Groups({"league"}, extend=true)
  */
-class LeagueBench extends ContainerBenchCase
+class LeagueContainerBench extends ContainerBenchCase
 {
     private $container;
 
@@ -22,8 +23,8 @@ class LeagueBench extends ContainerBenchCase
     {
         $this->container = new Container();
 
-        $this->container->add('bicycle_factory', 'PhpBench\Benchmarks\Container\Acme\BicycleFactory');
-        $this->container->share('bicycle_factory_shared', 'PhpBench\Benchmarks\Container\Acme\BicycleFactory');
+        $this->container->add('bicycle_factory', BicycleFactory::class);
+        $this->container->share('bicycle_factory_shared', BicycleFactory::class);
     }
 
     /**

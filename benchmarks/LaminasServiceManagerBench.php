@@ -3,12 +3,12 @@
 namespace PhpBench\Benchmarks\Container;
 
 use PhpBench\Benchmarks\Container\Acme\BicycleFactory;
-use Zend\ServiceManager\ServiceManager;
+use Laminas\ServiceManager\ServiceManager;
 
 /**
  * @Groups({"phpbench"}, extend=true)
  */
-class ZendServiceManagerBench extends ContainerBenchCase
+class LaminasServiceManagerBench extends ContainerBenchCase
 {
     private $container;
 

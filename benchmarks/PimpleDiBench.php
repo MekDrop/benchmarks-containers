@@ -2,12 +2,13 @@
 
 namespace PhpBench\Benchmarks\Container;
 
+use PhpBench\Benchmarks\Container\Acme\BicycleFactory;
 use Pimple\Container;
 
 /**
  * @Groups({"pimple"}, extend=true)
  */
-class PimpleBench extends ContainerBenchCase
+class PimpleDiBench extends ContainerBenchCase
 {
     private $container;
 
@@ -48,10 +49,10 @@ class PimpleBench extends ContainerBenchCase
     {
         $container = new Container();
         $closure = function ($c) {
-            return new \PhpBench\Benchmarks\Container\Acme\BicycleFactory;
+            return new BicycleFactory;
         };
         $prototype = $container->factory(function ($c) {
-            return new \PhpBench\Benchmarks\Container\Acme\BicycleFactory;
+            return new BicycleFactory;
         });
 
         $container['bicycle_factory'] = $closure;
