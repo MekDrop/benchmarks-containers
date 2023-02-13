@@ -3,7 +3,7 @@
     "license": "mit",
     "description": "This benchmarking suite compares PHP Dependency Injection Containers. Its sort of an example project for PHPBench.",
     "require": {
-        "php-di/php-di": "^5.0.0",
+        "php-di/php-di": "^7.0.2",
         "symfony/dependency-injection": "^4.2|^5",
         "pimple/pimple": "^3.0.0",
         "illuminate/container": "^5.0.0",
