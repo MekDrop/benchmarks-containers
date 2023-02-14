@@ -1,14 +1,17 @@
 {
-    "path": "benchmarks",
-    "bootstrap": "vendor/autoload.php",
-    "outputs": {
-        "container_html": {
+    "$schema":"./vendor/phpbench/phpbench/phpbench.schema.json",
+    "runner.path": "benchmarks",
+    "runner.bootstrap": "vendor/autoload.php",
+    "report.outputs": {
+        "html": {
             "title": "PHP Dependency Injection Container Benchmarks",
-            "extends": "html"
+            "renderer": "html",
+            "path": "output/report.html"
         }
     },
-    "retry_threshold": 5,
-    "reports": {
+    "runner.file_pattern": "*Bench.php",
+    "runner.retry_threshold": 5,
+    "report.components": {
         "container": {
             "title": "Time",
             "generator": "table",

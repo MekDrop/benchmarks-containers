@@ -2,9 +2,9 @@
 
 namespace PhpBench\Benchmarks\Container;
 
-use DI\ContainerBuilder;
-use DI\Cache\ArrayCache;
 use League\Container\Container;
+use PhpBench\Benchmark\Metadata\Annotations\Groups;
+use PhpBench\Benchmark\Metadata\Annotations\Skip;
 use PhpBench\Benchmarks\Container\Acme\BicycleFactory;
 
 /**
@@ -16,7 +16,7 @@ class LeagueContainerBench extends ContainerBenchCase
 
     public function initOptimized()
     {
-        return $this->initUnoptimized();
+        $this->initUnoptimized();
     }
 
     public function initUnoptimized()
@@ -24,7 +24,7 @@ class LeagueContainerBench extends ContainerBenchCase
         $this->container = new Container();
 
         $this->container->add('bicycle_factory', BicycleFactory::class);
-        $this->container->share('bicycle_factory_shared', BicycleFactory::class);
+        $this->container->add('bicycle_factory_shared', BicycleFactory::class)->setShared(true);
     }
 
     /**

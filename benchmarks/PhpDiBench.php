@@ -3,8 +3,9 @@
 namespace PhpBench\Benchmarks\Container;
 
 use DI\ContainerBuilder;
-use DI\Cache\ArrayCache;
+use PhpBench\Benchmark\Metadata\Annotations\Groups;
 use PhpBench\Benchmarks\Container\Acme\BicycleFactory;
+use function DI\create;
 
 /**
  * @Groups({"php-di"}, extend=true)
@@ -15,11 +16,9 @@ class PhpDiBench extends ContainerBenchCase
 
     private function createOptimizedBuilder()
     {
-        $cache = new ArrayCache($this->cacheDir);
         $builder = new ContainerBuilder();
-        $builder->setDefinitionCache($cache);
         $builder->addDefinitions(array(
-            'bicycle_factory' => \DI\object(BicycleFactory::class)
+            'bicycle_factory' => create(BicycleFactory::class)
         ));
 
         return $builder;
@@ -38,7 +37,7 @@ class PhpDiBench extends ContainerBenchCase
         $builder = new ContainerBuilder();
 
         $this->container = $builder->build();
-        $this->container->set('bicycle_factory', \DI\object(BicycleFactory::class));
+        $this->container->set('bicycle_factory', create(BicycleFactory::class));
     }
 
     public function initPrototype()

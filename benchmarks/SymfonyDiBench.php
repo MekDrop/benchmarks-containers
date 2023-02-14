@@ -2,10 +2,9 @@
 
 namespace PhpBench\Benchmarks\Container;
 
-use ProjectServiceContainer;
+use PhpBench\Benchmark\Metadata\Annotations\Groups;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Dumper\PhpDumper;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use PhpBench\Benchmarks\Container\Acme\BicycleFactory;
 
 /**
@@ -28,9 +27,19 @@ class SymfonyDiBench extends ContainerBenchCase
     public static function getContainer()
     {
         $builder = new ContainerBuilder();
-        $protoDefinition = $builder->register('bicycle_factory', BicycleFactory::class);
-        //$protoDefinition->setScope(ContainerInterface::SCOPE_PROTOTYPE);
-        $definition = $builder->register('bicycle_factory_shared', BicycleFactory::class);
+
+        $builder
+            ->register('bicycle_factory', BicycleFactory::class)
+            ->setShared(true)
+            ->setPublic(true)
+        ;
+
+        $builder
+            ->register('bicycle_factory_shared', BicycleFactory::class)
+            ->setPublic(true)
+        ;
+
+        $builder->compile();
 
         return $builder;
     }
@@ -59,7 +68,9 @@ class SymfonyDiBench extends ContainerBenchCase
     public function initOptimized()
     {
         require_once(self::getCacheDir() . DIRECTORY_SEPARATOR . 'container.php');
-        $container = new ProjectServiceContainer();
+
+        /** @noinspection PhpUndefinedClassInspection */
+        $container = new \ProjectServiceContainer();
 
         $this->container = $container;
     }
