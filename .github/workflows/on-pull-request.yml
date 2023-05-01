@@ -23,7 +23,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Install PHP
-        uses: shivammathur/setup-php@2.24.0
+        uses: shivammathur/setup-php@2.25.1
         with:
           php-version: ${{ matrix.php }}
           extensions: curl, json, mbstring, pcre, session
